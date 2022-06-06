@@ -6,3 +6,5 @@ old_text="SortBuildInput<T>"
 new_text="SortBuildInput<T extends Record<string, any>>"
 
 sed --in-place=.bkp "s/$old_text/$new_text/g" $file 
+
+npm install --save express

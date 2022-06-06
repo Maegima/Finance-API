@@ -12,14 +12,15 @@
     "migration:run": "ts-node ./node_modules/.bin/typeorm migration:run",
     "migration:show": "ts-node ./node_modules/.bin/typeorm migration:show",
     "migration:seed": "ts-node ./node_modules/typeorm-extension/dist/cli/index.js seed",
-    "start": "ts-node src/index.ts",
+    "start": "ts-node src/app/app.ts",
     "build": "tsc",
     "clean": "rm -R ./dist",
     "clean-build": "rm -R ./dist && tsc"
   },
   "author": "André Lucas Maegima",
-  "license": "ISC",
+  "license": "Apache-2.0 license",
   "dependencies": {
+    "express": "^4.18.1",
     "reflect-metadata": "^0.1.13",
     "sqlite3": "^5.0.8",
     "ts-node": "^10.8.1",
