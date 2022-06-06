@@ -1,0 +1,33 @@
+{
+  "name": "financeapi",
+  "version": "1.0.0",
+  "description": "Simple finance API",
+  "main": "dist/app/app.js",
+  "scripts": {
+    "test": "jest",
+    "coverage": "jest --coverage",
+    "lint": "eslint \"{src,test}/**/*.{js,ts}\"",
+    "lint-fix": "npm run lint -- --fix",
+    "migration:generate": "ts-node ./node_modules/.bin/typeorm migration:generate",
+    "migration:run": "ts-node ./node_modules/.bin/typeorm migration:run",
+    "migration:show": "ts-node ./node_modules/.bin/typeorm migration:show",
+    "migration:seed": "ts-node ./node_modules/typeorm-extension/dist/cli/index.js seed",
+    "start": "ts-node src/index.ts",
+    "build": "tsc",
+    "clean": "rm -R ./dist",
+    "clean-build": "rm -R ./dist && tsc"
+  },
+  "author": "André Lucas Maegima",
+  "license": "ISC",
+  "dependencies": {
+    "reflect-metadata": "^0.1.13",
+    "sqlite3": "^5.0.8",
+    "ts-node": "^10.8.1",
+    "typeorm": "^0.3.6",
+    "typeorm-extension": "^2.1.3",
+    "typescript": "^4.7.3"
+  },
+  "devDependencies": {
+    "@types/yargs": "^17.0.10"
+  }
+}
