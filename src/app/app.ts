@@ -1,10 +1,9 @@
-const express = require("express")
-const api = require('./api');
+import express from 'express';
+import { FinanceRouter } from 'app/router/finance.router';
 
 const app = express()
 
-app.get('/finance/', api.getFinances);
-app.get('/type/', api.getTypes);
+app.use(FinanceRouter);
 
 // Server port
 var port = 5000 
