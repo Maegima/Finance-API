@@ -12,7 +12,7 @@
     "migration:run": "ts-node ./node_modules/.bin/typeorm migration:run",
     "migration:show": "ts-node ./node_modules/.bin/typeorm migration:show",
     "migration:seed": "ts-node ./node_modules/typeorm-extension/dist/cli/index.js seed",
-    "start": "ts-node src/app/app.ts",
+    "start": "ts-node -r tsconfig-paths/register src/app/app.ts",
     "build": "tsc",
     "clean": "rm -R ./dist",
     "clean-build": "rm -R ./dist && tsc"
@@ -29,6 +29,7 @@
     "typescript": "^4.7.3"
   },
   "devDependencies": {
-    "@types/yargs": "^17.0.10"
+    "@types/yargs": "^17.0.10",
+    "tsconfig-paths": "^4.0.0"
   }
 }

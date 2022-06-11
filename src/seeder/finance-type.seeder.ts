@@ -1,6 +1,6 @@
 import { Seeder, SeederFactoryManager } from 'typeorm-extension';
 import { DataSource } from 'typeorm';
-import { Type, Asset } from '../entity/finance.entity';
+import { Type, Asset } from 'entity';
 
 export default class FinanceTypeSeeder implements Seeder {
     public async run(

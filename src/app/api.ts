@@ -1,14 +1,11 @@
 import { Repository } from 'typeorm';
 import AppDataSource from './data-source';
-import { Finance, Type } from '../entity/finance.entity';
-
-export class UsersRepository {
-  
-}
+import { Finance, Type } from 'entity';
+import { UsersRepository } from 'repository/finance.repository';
 
 export const getFinances = (request: any, response: any) => {
-    const repository: Repository<Finance> = AppDataSource.getRepository(Finance);
-    repository.find()
+    var usersRepository = new UsersRepository()
+    usersRepository.findAll()
         .then((finances) => response.status(200).json(finances))
         .catch((error) => response.status(500).json({ 'error': error }));
 };
