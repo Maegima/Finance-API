@@ -2,7 +2,7 @@
   "name": "financeapi",
   "version": "1.0.0",
   "description": "Simple finance API",
-  "main": "dist/app/app.js",
+  "main": "dist/app/index.js",
   "scripts": {
     "test": "jest",
     "coverage": "jest --coverage",
@@ -12,7 +12,7 @@
     "migration:run": "ts-node ./node_modules/.bin/typeorm migration:run",
     "migration:show": "ts-node ./node_modules/.bin/typeorm migration:show",
     "migration:seed": "ts-node ./node_modules/typeorm-extension/dist/cli/index.js seed",
-    "start": "ts-node -r tsconfig-paths/register src/app/app.ts",
+    "start": "ts-node -r tsconfig-paths/register src/app/index.ts",
     "build": "tsc",
     "clean": "rm -R ./dist",
     "clean-build": "rm -R ./dist && tsc"
