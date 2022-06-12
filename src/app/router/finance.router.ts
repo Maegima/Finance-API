@@ -12,7 +12,7 @@ async(request: Request, response: Response, next: NextFunction) => {
         .catch((error) => response.status(500).json({ 'error': error }));
 });
 
-router.get("/types", async(request: Request, response: Response, next: NextFunction) => {
+router.get("/finance/types", async(request: Request, response: Response, next: NextFunction) => {
     const typesRepository = new TypesRepository()
     typesRepository.findAll()
         .then((data) => response.status(200).json(data))

@@ -1,9 +1,9 @@
 import express from 'express';
-import { FinanceRouter } from 'app/router/finance.router';
+import { FinanceRouter, AccountRouter, HistoryRouter } from 'app/router';
 
 const app = express()
 
-app.use(FinanceRouter);
+app.use([FinanceRouter, AccountRouter, HistoryRouter]);
 
 // Server port
 var port = 5000 
