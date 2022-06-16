@@ -45,9 +45,9 @@ async(request: Request, response: Response, next: NextFunction) => {
     if(Array.isArray(type))
         response.status(401).json({'error': DefaultMessage.missingParameters(type)});
     else
-    typesRepository.insert(type)
-        .then((data) => response.status(200).json(data.identifiers))
-        .catch((error) => response.status(500).json({ 'error': error }));
+        typesRepository.insert(type)
+            .then((data) => response.status(200).json(data.identifiers))
+            .catch((error) => response.status(500).json({ 'error': error }));
 });
 
 export const FinanceRouter: Router = router;
