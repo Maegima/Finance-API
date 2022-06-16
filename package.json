@@ -20,6 +20,7 @@
   "author": "André Lucas Maegima",
   "license": "Apache-2.0 license",
   "dependencies": {
+    "cors": "^2.8.5",
     "express": "^4.18.1",
     "reflect-metadata": "^0.1.13",
     "sqlite3": "^5.0.8",
@@ -29,6 +30,7 @@
     "typescript": "^4.7.3"
   },
   "devDependencies": {
+    "@types/cors": "^2.8.12",
     "@types/express": "^4.17.13",
     "@types/yargs": "^17.0.10",
     "tsconfig-paths": "^4.0.0"
