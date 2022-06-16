@@ -1,5 +1,6 @@
 import express ,{ Request, Response, Router, NextFunction } from 'express';
 import { FinancesRepository, TypesRepository } from 'repository';
+import { Parameters, DefaultMessage } from 'app/service/';
 
 const router: Router = express.Router();
 const financesRepository = new FinancesRepository();
@@ -14,15 +15,17 @@ async(request: Request, response: Response, next: NextFunction) => {
 
 router.post("/finanece",
 async(request: Request, response: Response, next: NextFunction) => {
-    const fields = ["id", "value", "type", "description", "source", "destination", "reference"]
-    var finance: any = {};
-    Object.keys(request.body).forEach((key) => {
-        if(fields.includes(key))   
-            finance[key] = request.body[key];
-        });
-    financesRepository.insert(finance)
-        .then((data) => response.status(200).json(data.identifiers))
-        .catch((error) => response.status(500).json({ 'error': error }));
+    const parameters = new Parameters({
+        optional: ["destination", "reference"],
+        required: ["value", "type", "description", "source"]
+    })
+    var finance = parameters.parseBody(request.body);
+    if(Array.isArray(finance))
+        response.status(401).json({'error': DefaultMessage.missingParameters(finance)});
+    else
+        financesRepository.insert(finance)
+            .then((data) => response.status(200).json(data.identifiers))
+            .catch((error) => response.status(500).json({ 'error': error }));
 });
 
 router.get("/finance/types", async(request: Request, response: Response, next: NextFunction) => {
@@ -33,8 +36,16 @@ router.get("/finance/types", async(request: Request, response: Response, next: N
 
 router.post("/finance/type", 
 async(request: Request, response: Response, next: NextFunction) => {
-    const {name, description, asset} = request.body;
-    typesRepository.insert({name, description, asset})
+    const parameters = new Parameters({
+        optional: ["asset"],
+        required: ["name", "description"]
+    })
+
+    var type = parameters.parseBody(request.body);
+    if(Array.isArray(type))
+        response.status(401).json({'error': DefaultMessage.missingParameters(type)});
+    else
+    typesRepository.insert(type)
         .then((data) => response.status(200).json(data.identifiers))
         .catch((error) => response.status(500).json({ 'error': error }));
 });
