@@ -24,18 +24,21 @@ export class Finance extends BaseTimeEntity {
   @Column({type: "double"})
   public value: number;
 
-  @ManyToOne(() => Type, (type) => type.name, {nullable: false})
+  @ManyToOne(() => Type, (type) => type.name, {nullable: false, eager: true})
   public type: Type;
 
   @Column()
   public description: string;
 
-  @ManyToOne(() => Account, (account) => account.name, {nullable: false})
+  @ManyToOne(() => Account, (account) => account.name, {nullable: false, eager: true})
   public source: Account;
 
-  @ManyToOne(() => Account, (account) => account.name)
+  @ManyToOne(() => Account, (account) => account.name, {eager: true})
   public destination: Account;
 
   @ManyToOne(() => Finance, (finance) => finance.id)
   public reference: Finance;
+
+  @Column({nullable: true})
+  public referenceId: number;
 }
