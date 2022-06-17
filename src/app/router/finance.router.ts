@@ -13,7 +13,7 @@ async(request: Request, response: Response, next: NextFunction) => {
         .catch((error) => response.status(500).json({ 'error': error }));
 });
 
-router.post("/finanece",
+router.post("/finance",
 async(request: Request, response: Response, next: NextFunction) => {
     const parameters = new Parameters({
         optional: ["destination", "reference"],
