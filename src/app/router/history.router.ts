@@ -16,7 +16,7 @@ router.post("/account",
 async(request: Request, response: Response, next: NextFunction) => {
     const parameters = new Parameters({
         optional: ["earned", "spent", "type"],
-        required: ["source", "date"]
+        required: ["source", "datetime"]
     })
 
     var history = parameters.parseBody(request.body);

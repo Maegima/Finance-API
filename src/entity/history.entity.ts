@@ -16,7 +16,7 @@ export class History extends BaseTimeEntity {
     @Column({type: "double", nullable: true})
     public current: number;
 
-    @Column({type: "date"})
-    public date: string;
+    @Column({type: "datetime"})
+    public datetime: string;
 }
 
