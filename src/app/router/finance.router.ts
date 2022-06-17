@@ -13,6 +13,12 @@ async(request: Request, response: Response, next: NextFunction) => {
         .catch((error) => response.status(500).json({ 'error': error }));
 });
 
+router.get("/finance/types", async(request: Request, response: Response, next: NextFunction) => {
+    typesRepository.findAll()
+        .then((data) => response.status(200).json(data))
+        .catch((error) => response.status(500).json({ 'error': error }));
+});
+
 router.get("/finance/:id",
 async(request: Request, response: Response, next: NextFunction) => {
     var id = parseInt(request.params.id);
@@ -37,12 +43,6 @@ async(request: Request, response: Response, next: NextFunction) => {
         financesRepository.insert(finance)
             .then((data) => response.status(200).json(data.identifiers))
             .catch((error) => response.status(500).json({ 'error': error }));
-});
-
-router.get("/finance/types", async(request: Request, response: Response, next: NextFunction) => {
-    typesRepository.findAll()
-        .then((data) => response.status(200).json(data))
-        .catch((error) => response.status(500).json({ 'error': error }));
 });
 
 router.post("/finance/type", 
