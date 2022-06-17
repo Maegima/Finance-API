@@ -10,6 +10,9 @@ export class FinancesRepository implements IRepository<Finance> {
   public async findAll(): Promise<Finance[]> {
     return financeRepository.find();
   }
+  public async findById(id: number) : Promise<Finance | null> {
+    return financeRepository.findOneBy({id: id});
+  }
   public async insert(item: any): Promise<InsertResult> {
     var finance = financeRepository.create(item);
     return financeRepository.insert(finance);

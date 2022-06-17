@@ -13,6 +13,17 @@ async(request: Request, response: Response, next: NextFunction) => {
         .catch((error) => response.status(500).json({ 'error': error }));
 });
 
+router.get("/finance/:id",
+async(request: Request, response: Response, next: NextFunction) => {
+    var id = parseInt(request.params.id);
+    if(isNaN(id))
+        response.status(400).json({'error': 'Invalid id.'});
+    else
+        financesRepository.findById(id)
+            .then((data) => response.status(200).json(data))
+            .catch((error) => response.status(500).json({ 'error': error }));
+});
+
 router.post("/finance",
 async(request: Request, response: Response, next: NextFunction) => {
     const parameters = new Parameters({
@@ -21,7 +32,7 @@ async(request: Request, response: Response, next: NextFunction) => {
     })
     var finance = parameters.parseBody(request.body);
     if(Array.isArray(finance))
-        response.status(401).json({'error': DefaultMessage.missingParameters(finance)});
+        response.status(400).json({'error': DefaultMessage.missingParameters(finance)});
     else
         financesRepository.insert(finance)
             .then((data) => response.status(200).json(data.identifiers))
