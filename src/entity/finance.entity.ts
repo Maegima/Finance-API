@@ -41,4 +41,7 @@ export class Finance extends BaseTimeEntity {
 
   @Column({nullable: true})
   public referenceId: number;
+
+  @Column({type: "date"})
+  public date: string;
 }
