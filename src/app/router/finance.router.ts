@@ -17,7 +17,7 @@ router.post("/finance",
 async(request: Request, response: Response, next: NextFunction) => {
     const parameters = new Parameters({
         optional: ["destination", "reference"],
-        required: ["value", "type", "description", "source"]
+        required: ["value", "type", "description", "source", "date"]
     })
     var finance = parameters.parseBody(request.body);
     if(Array.isArray(finance))
