@@ -45,6 +45,24 @@ async(request: Request, response: Response, next: NextFunction) => {
             .catch((error) => response.status(500).json({ 'error': error }));
 });
 
+router.put("/finance/:id", 
+async(request: Request, response: Response, next: NextFunction) => {
+    var id = parseInt(request.params.id);
+    const parameters = new Parameters({
+        optional: ["id", "value", "type", "description", "source", "datetime","destination", "reference"],
+        required: []
+    })
+    var finance = parameters.parseBody(request.body);
+    if(isNaN(id))
+        response.status(400).json({'error': 'Invalid id.'});
+    else if(Object.keys(finance).length < 1)
+        response.status(400).json({'error': 'No parameters provided.'});
+    else
+        financesRepository.update(id, finance)
+            .then((data) => response.status(200).json(data))
+            .catch((error) => response.status(500).json({ 'error': error }));
+})
+
 router.post("/finance/type", 
 async(request: Request, response: Response, next: NextFunction) => {
     const parameters = new Parameters({

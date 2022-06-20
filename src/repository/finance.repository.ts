@@ -17,6 +17,9 @@ export class FinancesRepository implements IRepository<Finance> {
     var finance = financeRepository.create(item);
     return financeRepository.insert(finance);
   }
+  public async update(id: number, item: any): Promise<any> {
+    return financeRepository.update({id: id}, item);
+  }
 }
 
 export class TypesRepository implements IRepository<Type> {
