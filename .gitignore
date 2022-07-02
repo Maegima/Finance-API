@@ -1,6 +1,7 @@
 *.db
 *.sqlite
 *.bkp
+*.sql
 
 # Logs
 logs
