@@ -49,7 +49,7 @@ router.put("/finance/:id",
 async(request: Request, response: Response, next: NextFunction) => {
     var id = parseInt(request.params.id);
     const parameters = new Parameters({
-        optional: ["id", "value", "type", "description", "source", "datetime","destination", "reference"],
+        optional: ["id", "value", "type", "description", "source", "datetime","destination", "referenceId"],
         required: []
     })
     var finance = parameters.parseBody(request.body);
